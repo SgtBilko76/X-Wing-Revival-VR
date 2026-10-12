@@ -28,6 +28,8 @@
 
         <meta-data android:name="com.oculus.supportedDevices" android:value="quest2|quest3|questpro|quest3s" />
         <meta-data android:name="com.oculus.intent.category.VR" android:value="vr_only" />
+        <!-- PICO: launch as a VR app. -->
+        <meta-data android:name="pvr.app.type" android:value="vr" />
 
         <activity
             android:name=".XWingRevivalActivity"
