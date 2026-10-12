@@ -46,11 +46,15 @@ JoinMenu::JoinMenu( void )
 	AddElement( new JoinMenuTextBox( &rect, ItemFont, Font::ALIGN_MIDDLE_LEFT, "name" ) );
 	
 	rect.y += rect.h + 16;
-	AddElement( new Label( &rect, "LAN Games:", LabelFont, Font::ALIGN_MIDDLE_LEFT ) );
+	AddElement( new Label( &rect, "Servers:", LabelFont, Font::ALIGN_MIDDLE_LEFT ) );
 	rect.y += rect.h + 4;
 	rect.h = ItemFont->GetLineSkip() * 8;
 	ServerList = new JoinMenuListBox( &rect, ItemFont, 20, "host_address" );
 	AddElement( ServerList );
+	
+	// Internet servers are always listed (LAN games are added below them as they announce themselves).
+	ServerList->AddItem( XWR_ONLINE_SERVER, "X-Wing Revival VR Server (Internet)" );
+	ServerList->AddItem( "www.raptor007.com:7000", "Raptor007 Official Server (Internet)" );
 	
 	rect.y += rect.h + 16;
 	rect.h = ItemFont->GetHeight();

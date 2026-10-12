@@ -120,7 +120,8 @@ foreach(d ${_engine_dirs})
 	endif()
 endforeach()
 
-set(XWR_DEFS SDL2 NO_VR)
+set(XWR_ONLINE_SERVER "217.154.211.69:7000" CACHE STRING "Server that the main menu's Fly Online button joins")
+set(XWR_DEFS SDL2 NO_VR "XWR_ONLINE_SERVER=\"${XWR_ONLINE_SERVER}\"")
 set(XWR_WARN -Wall -Wno-multichar -Wno-unused-parameter -Wno-overloaded-virtual -Wno-unused-variable
 	-Wno-unused-but-set-variable -Wno-sign-compare -Wno-misleading-indentation -Wno-format-truncation)
 

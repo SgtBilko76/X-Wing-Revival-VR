@@ -403,7 +403,7 @@ MainMenuOnlineButton::~MainMenuOnlineButton()
 void MainMenuOnlineButton::Clicked( Uint8 button )
 {
 	if( button == SDL_BUTTON_LEFT )
-		Raptor::Game->Cfg.Command( std::string("connect ") + Raptor::Game->Cfg.SettingAsString( "online_server", "www.raptor007.com:7000", "www.raptor007.com:7000" ) );
+		Raptor::Game->Cfg.Command( std::string("connect ") + Raptor::Game->Cfg.SettingAsString( "online_server", XWR_ONLINE_SERVER, XWR_ONLINE_SERVER ) );
 }
 
 

@@ -8,9 +8,10 @@ Beta of **X-Wing Revival VR**: [X-Wing Revival](https://github.com/Raptor007/X-W
 - Touch controllers bound as a joystick in flight, remappable in *Controls*
 - Laser pointer for the menus (right controller)
 - Single player, LAN and online games; the Linux dedicated server works with Quest and PC players
+- **Fly Online** joins the X-Wing Revival VR server (`217.154.211.69:7000`); *Custom / LAN* lists it and the official Raptor007 server
 
 ### Install (Quest)
-1. Install `X-Wing-Revival-VR-v0.1.0-beta.apk` with SideQuest or `adb install -r X-Wing-Revival-VR-v0.1.0-beta.apk`.
+1. Install `X-Wing-Revival-VR-v0.1.1-beta.apk` with SideQuest or `adb install -r X-Wing-Revival-VR-v0.1.1-beta.apk`.
 2. Download the official [X-Wing Revival 0.6.1 zip](https://github.com/Raptor007/X-Wing-Revival/releases/download/v0.6.1-alpha/X-Wing.Revival.0.6.1.Alpha.zip) and unzip it on your PC.
 3. From the `X-Wing Revival` folder copy `Fonts`, `Missions`, `Models`, `Music`, `Shaders`, `Ships`, `Sounds` and `Textures` to `/sdcard/XWingRevival/` on the headset (about 310 MB, with SideQuest's file manager or `adb push`).
 4. Start **X-Wing Revival VR** from *Unknown Sources* and allow "access to all files" when asked.
@@ -32,7 +33,7 @@ Beta of **X-Wing Revival VR**: [X-Wing Revival](https://github.com/Raptor007/X-W
 | Hold both stick clicks 1 s | Recenter view | Recenter view |
 
 ### Dedicated server (Linux x86_64)
-Unpack `X-Wing-Revival-VR-server-v0.1.0-beta-linux-x86_64.tar.gz` and run `./start-server.sh`. It needs no graphics card or display; on the first start it downloads the official game once and keeps only the data the server needs. Players join on TCP port 7000 (on a LAN it shows up in *Custom / LAN*).
+Unpack `X-Wing-Revival-VR-server-v0.1.0-beta-linux-x86_64.tar.gz` (from the [v0.1.0-beta release](https://github.com/SgtBilko76/X-Wing-Revival-VR/releases/tag/v0.1.0-beta)) and run `./start-server.sh`. It needs no graphics card or display; on the first start it downloads the official game once and keeps only the data the server needs. Players join on TCP port 7000 (on a LAN it shows up in *Custom / LAN*). PC players with the original game join an Internet server by typing its address in *Custom / LAN* → *Connect to IP Address*.
 
 ### Known limits
 - Big fleet battles run at about 45-65 FPS (72 Hz display); the engine draws each eye separately.

@@ -586,7 +586,7 @@ void XWingGame::SetDefaults( void )
 	if( Cfg.Settings[ "name" ] == "Name" )
 		Cfg.Settings[ "name" ] = "Rookie One";
 	
-	Cfg.Settings[ "host_address" ] = "www.raptor007.com";
+	Cfg.Settings[ "host_address" ] = XWR_ONLINE_SERVER;
 	
 	Cfg.Settings[ "view" ] = "auto";
 	Cfg.Settings[ "spectator_view" ] = "auto";
