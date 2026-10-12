@@ -41,6 +41,16 @@ public class XWingRevivalActivity extends SDLActivity
     }
 
     @Override
+    protected String[] getArguments()
+    {
+        // Developer testing: adb shell am start ... --es args "-screensaver"
+        String args = getIntent() != null ? getIntent().getStringExtra( "args" ) : null;
+        if( args == null || args.trim().isEmpty() )
+            return new String[0];
+        return args.trim().split( "\\s+" );
+    }
+
+    @Override
     protected String[] getLibraries()
     {
         return new String[] { "SDL2", "main" };

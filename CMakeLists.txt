@@ -19,6 +19,14 @@ option(XWR_SERVER_ONLY "Build only the headless dedicated server" OFF)
 # Some vendored deps (freetype, gl4es) declare ancient cmake_minimum_required versions.
 set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
 
+if(ANDROID)
+	# Gradle debug builds default to -O0, which makes this engine (and gl4es) ~5x too slow for VR.
+	set(CMAKE_C_FLAGS_DEBUG "-O2 -g")
+	set(CMAKE_CXX_FLAGS_DEBUG "-O2 -g")
+	set(CMAKE_C_FLAGS_RELEASE "-O2 -DNDEBUG")
+	set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
+endif()
+
 set(ENGINE ${CMAKE_CURRENT_SOURCE_DIR}/RaptorEngine)
 set(EXT ${CMAKE_CURRENT_SOURCE_DIR}/external)
 

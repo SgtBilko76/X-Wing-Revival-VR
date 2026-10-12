@@ -466,10 +466,10 @@ void XWingGame::SetDefaultControls( void )
 	Cfg.JoyHatBinds[ "Xbox" ][ 0 ][ SDL_HAT_RIGHT ] = XWing::Control::TARGET_NEXT_ENEMY;        // D-Pad Right
 	
 #ifdef XWR_OPENXR
-	// Meta Quest Touch controllers: right stick pitch/yaw, left stick throttle/roll.
-	Cfg.JoyAxisBinds[ "VRTouch" ][ 0 ] = XWing::Control::YAW;                         // Right Stick X
-	Cfg.JoyAxisBinds[ "VRTouch" ][ 1 ] = XWing::Control::PITCH;                       // Right Stick Y
-	Cfg.JoyAxisBinds[ "VRTouch" ][ 2 ] = XWing::Control::ROLL;                        // Left Stick X
+	// Meta Quest Touch controllers: left stick pitch/yaw, right stick throttle/roll.
+	Cfg.JoyAxisBinds[ "VRTouch" ][ 0 ] = XWing::Control::YAW;                         // Left Stick X
+	Cfg.JoyAxisBinds[ "VRTouch" ][ 1 ] = XWing::Control::PITCH;                       // Left Stick Y
+	Cfg.JoyAxisBinds[ "VRTouch" ][ 2 ] = XWing::Control::ROLL;                        // Right Stick X
 	Cfg.JoyButtonBinds[ "VRTouch" ][  0 ] = XWing::Control::TARGET_NEAREST_ENEMY;     // A
 	Cfg.JoyButtonBinds[ "VRTouch" ][  1 ] = XWing::Control::TARGET_NEAREST_ATTACKER;  // B
 	Cfg.JoyButtonBinds[ "VRTouch" ][  2 ] = XWing::Control::SHIELD_DIR;               // X
@@ -481,8 +481,8 @@ void XWingGame::SetDefaultControls( void )
 	Cfg.JoyButtonBinds[ "VRTouch" ][  8 ] = XWing::Control::TARGET_OBJECTIVE;         // Right Stick Click
 	Cfg.JoyButtonBinds[ "VRTouch" ][  9 ] = XWing::Control::SCORES;                   // Left Stick Click
 	Cfg.JoyButtonBinds[ "VRTouch" ][ 10 ] = XWing::Control::MENU;                     // Menu
-	Cfg.JoyButtonBinds[ "VRTouch" ][ 11 ] = XWing::Control::THROTTLE_UP;              // Left Stick Up
-	Cfg.JoyButtonBinds[ "VRTouch" ][ 12 ] = XWing::Control::THROTTLE_DOWN;            // Left Stick Down
+	Cfg.JoyButtonBinds[ "VRTouch" ][ 11 ] = XWing::Control::THROTTLE_UP;              // Right Stick Up
+	Cfg.JoyButtonBinds[ "VRTouch" ][ 12 ] = XWing::Control::THROTTLE_DOWN;            // Right Stick Down
 #endif
 	
 	if( Input.DeviceTypes.find("Pad") != Input.DeviceTypes.end() )
@@ -664,6 +664,17 @@ void XWingGame::SetDefaults( void )
 		Cfg.Settings[ "g_res_fullscreen_y" ] = "0";
 		Cfg.Settings[ "g_shader_version" ] = "110";
 		Cfg.Settings[ "maxfps" ] = "0";
+		// Mobile GPU/CPU budget: lighter effects than the PC defaults.
+		Cfg.Settings[ "g_debris" ] = "100";
+		Cfg.Settings[ "g_debris_quality" ] = "1";
+		Cfg.Settings[ "g_shader_point_lights" ] = "2";
+		Cfg.Settings[ "g_shader_blastpoints" ] = "4";
+		Cfg.Settings[ "g_shader_blastpoint_quality" ] = "1";
+		Cfg.Settings[ "g_deathstar_trench" ] = "2";
+		Cfg.Settings[ "g_deathstar_surface" ] = "2";
+		Cfg.Settings[ "g_deathstar_bumpmap" ] = "false";
+		Cfg.Settings[ "g_asteroid_lod" ] = "0.5";
+		Cfg.Settings[ "g_fsaa" ] = "0";
 	#endif
 	
 	#ifdef APPLE_POWERPC

@@ -23,7 +23,7 @@ for p in $("$ADB" shell ps -A -o NAME | grep -E "^com\.bilko\." | grep -v "^$PKG
 "$ADB" shell input keyevent KEYCODE_WAKEUP
 sleep 1
 "$ADB" logcat -c
-"$ADB" shell am start -n $PKG/.XWingRevivalActivity > /dev/null
+"$ADB" shell am start -n $PKG/.XWingRevivalActivity ${XWR_ARGS:+--es args "\"$XWR_ARGS\""} > /dev/null
 timeout "$SECS" "$ADB" logcat -v brief XWingRevival:V LIBGL:V DEBUG:V libc:F AndroidRuntime:E VrApi:I '*:S' > "$OUT/run.log"
 "$ADB" shell am startservice -n com.oculus.metacam/.capture.CaptureService -a TAKE_SCREENSHOT > /dev/null
 sleep 3
