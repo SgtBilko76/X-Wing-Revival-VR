@@ -171,6 +171,11 @@ void XWingGame::SetDefaultJoyTypes( void )
 	// Linux does not replace the device string for Xbox compatible controllers, and some do not contain "Xbox".
 	Input.DeviceTypes.insert( "ProEX" );
 #endif
+
+#ifdef XWR_OPENXR
+	// Meta Quest Touch controllers (virtual joystick fed by RaptorEngine/VR/QuestInput.cpp).
+	Input.DeviceTypes.insert( "VRTouch" );
+#endif
 }
 
 
@@ -459,6 +464,26 @@ void XWingGame::SetDefaultControls( void )
 	Cfg.JoyHatBinds[ "Xbox" ][ 0 ][ SDL_HAT_DOWN  ] = XWing::Control::TARGET_NEAREST_ATTACKER;  // D-Pad Down
 	Cfg.JoyHatBinds[ "Xbox" ][ 0 ][ SDL_HAT_LEFT  ] = XWing::Control::TARGET_PREV_ENEMY;        // D-Pad Left
 	Cfg.JoyHatBinds[ "Xbox" ][ 0 ][ SDL_HAT_RIGHT ] = XWing::Control::TARGET_NEXT_ENEMY;        // D-Pad Right
+	
+#ifdef XWR_OPENXR
+	// Meta Quest Touch controllers: right stick pitch/yaw, left stick throttle/roll.
+	Cfg.JoyAxisBinds[ "VRTouch" ][ 0 ] = XWing::Control::YAW;                         // Right Stick X
+	Cfg.JoyAxisBinds[ "VRTouch" ][ 1 ] = XWing::Control::PITCH;                       // Right Stick Y
+	Cfg.JoyAxisBinds[ "VRTouch" ][ 2 ] = XWing::Control::ROLL;                        // Left Stick X
+	Cfg.JoyButtonBinds[ "VRTouch" ][  0 ] = XWing::Control::TARGET_NEAREST_ENEMY;     // A
+	Cfg.JoyButtonBinds[ "VRTouch" ][  1 ] = XWing::Control::TARGET_NEAREST_ATTACKER;  // B
+	Cfg.JoyButtonBinds[ "VRTouch" ][  2 ] = XWing::Control::SHIELD_DIR;               // X
+	Cfg.JoyButtonBinds[ "VRTouch" ][  3 ] = XWing::Control::TARGET_NEWEST_INCOMING;   // Y
+	Cfg.JoyButtonBinds[ "VRTouch" ][  4 ] = XWing::Control::FIRE;                     // Right Trigger
+	Cfg.JoyButtonBinds[ "VRTouch" ][  5 ] = XWing::Control::TARGET_CROSSHAIR;         // Left Trigger
+	Cfg.JoyButtonBinds[ "VRTouch" ][  6 ] = XWing::Control::WEAPON;                   // Right Grip
+	Cfg.JoyButtonBinds[ "VRTouch" ][  7 ] = XWing::Control::MODE;                     // Left Grip
+	Cfg.JoyButtonBinds[ "VRTouch" ][  8 ] = XWing::Control::TARGET_OBJECTIVE;         // Right Stick Click
+	Cfg.JoyButtonBinds[ "VRTouch" ][  9 ] = XWing::Control::SCORES;                   // Left Stick Click
+	Cfg.JoyButtonBinds[ "VRTouch" ][ 10 ] = XWing::Control::MENU;                     // Menu
+	Cfg.JoyButtonBinds[ "VRTouch" ][ 11 ] = XWing::Control::THROTTLE_UP;              // Left Stick Up
+	Cfg.JoyButtonBinds[ "VRTouch" ][ 12 ] = XWing::Control::THROTTLE_DOWN;            // Left Stick Down
+#endif
 	
 	if( Input.DeviceTypes.find("Pad") != Input.DeviceTypes.end() )
 	{

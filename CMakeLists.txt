@@ -101,8 +101,8 @@ endforeach()
 # ---------------------------------------------------------------------------
 # Game + engine sources
 
-file(GLOB GAME_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/Sources/*.cpp ${CMAKE_CURRENT_SOURCE_DIR}/Sources/*/*.cpp)
-file(GLOB ENGINE_SOURCES ${ENGINE}/*/*.cpp)
+file(GLOB GAME_SOURCES CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Sources/*.cpp ${CMAKE_CURRENT_SOURCE_DIR}/Sources/*/*.cpp)
+file(GLOB ENGINE_SOURCES CONFIGURE_DEPENDS ${ENGINE}/*/*.cpp)
 list(FILTER ENGINE_SOURCES EXCLUDE REGEX "/Saitek/")
 set(ENGINE_INCLUDES "")
 file(GLOB _engine_dirs LIST_DIRECTORIES true ${ENGINE}/*)
