@@ -33,3 +33,4 @@ std*.txt
 /quest/local.properties
 /dist/
 *.apk
+build-full-data/

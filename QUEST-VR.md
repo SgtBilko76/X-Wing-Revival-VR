@@ -1,6 +1,6 @@
 **X-Wing Revival VR 1.0.1**: [X-Wing Revival](https://github.com/Raptor007/X-Wing-Revival) 0.6.1 by Raptor007 running natively on Meta Quest and PICO (OpenXR + OpenGL ES through gl4es), plus a headless dedicated server for Linux.
 
-**The APK contains no game data.** X-Wing Revival is free: download the official game once and copy its folders to the headset (see Install).
+**Two APKs:** `X-Wing-Revival-VR-v1.0.1-full.apk` (234 MB) has the X-Wing Revival 0.6.1 game data built in. Install it and play. `X-Wing-Revival-VR-v1.0.1.apk` (small) has no game data; with it you copy the official game folders to the headset yourself (see Install).
 
 ### Changes since v0.1.1-beta
 - Menus, lobby and pause menu: the space background (or the paused battle) now surrounds you in 3D, with the menu floating in front of you
@@ -18,7 +18,12 @@
 - Single player, LAN and online games; the Linux dedicated server works with Quest, PICO and PC players
 - Custom missions (see below)
 
-### Install
+### Install (full APK, easiest)
+1. Install `X-Wing-Revival-VR-v1.0.1-full.apk` with SideQuest or `adb install -r X-Wing-Revival-VR-v1.0.1-full.apk`.
+2. Start **X-Wing Revival VR** from *Unknown Sources* and allow "access to all files" when asked.
+3. The first start unpacks the game data to `/sdcard/XWingRevival/` (about 310 MB, takes a moment), then the menu appears.
+
+### Install (small APK)
 1. Install `X-Wing-Revival-VR-v1.0.1.apk` with SideQuest or `adb install -r X-Wing-Revival-VR-v1.0.1.apk`.
 2. Download the official [X-Wing Revival 0.6.1 zip](https://github.com/Raptor007/X-Wing-Revival/releases/download/v0.6.1-alpha/X-Wing.Revival.0.6.1.Alpha.zip) and unzip it on your PC.
 3. From the `X-Wing Revival` folder copy `Fonts`, `Missions`, `Models`, `Music`, `Shaders`, `Ships`, `Sounds` and `Textures` to `/sdcard/XWingRevival/` on the headset (about 310 MB, with SideQuest's file manager or `adb push`).

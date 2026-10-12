@@ -67,7 +67,16 @@ android {
         main {
             // SDL's Java side (SDLActivity etc.) straight from the SDL submodule.
             java.srcDirs += '../../external/SDL/android-project/app/src/main/java'
+            // Full APK (tools/build_full_apk.sh): -PgameData=<dir> holding gamedata.idx + gamedata/,
+            // unpacked to /sdcard/XWingRevival on first start.
+            if( project.hasProperty('gameData') )
+                assets.srcDirs += file(project.property('gameData'))
         }
+    }
+
+    androidResources {
+        // Keep every game data file (the default pattern drops names starting with '_' or '.').
+        ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:!CVS:!thumbs.db:!picasa.ini:!*~'
     }
 
     packagingOptions {
