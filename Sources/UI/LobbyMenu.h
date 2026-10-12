@@ -7,6 +7,7 @@ class LobbyMenu;
 class LobbyMenuFlyButton;
 class LobbyMenuLeaveButton;
 class LobbyMenuPrefsButton;
+class LobbyMenuUploadButton;
 class LobbyMenuPlayerTextBox;
 class LobbyMenuPlayerDropDown;
 class LobbyMenuShipDropDown;
@@ -37,6 +38,7 @@ public:
 	LobbyMenuFlyButton *FlyButton;
 	LobbyMenuLeaveButton *LeaveButton;
 	LobbyMenuPrefsButton *PrefsButton;
+	LobbyMenuUploadButton *UploadButton;
 	LobbyMenuPlayerTextBox *PlayerName;
 	LobbyMenuPlayerDropDown *ShipDropDown;
 	LobbyMenuPlayerDropDown *GroupDropDown;
@@ -84,6 +86,15 @@ class LobbyMenuPrefsButton : public LabelledButton
 public:
 	LobbyMenuPrefsButton( std::string title = "Preferences" );
 	virtual ~LobbyMenuPrefsButton();
+	void Clicked( Uint8 button = SDL_BUTTON_LEFT );
+};
+
+
+class LobbyMenuUploadButton : public LabelledButton
+{
+public:
+	LobbyMenuUploadButton( std::string title = "Upload Mission" );
+	virtual ~LobbyMenuUploadButton();
 	void Clicked( Uint8 button = SDL_BUTTON_LEFT );
 };
 

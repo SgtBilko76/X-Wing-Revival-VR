@@ -155,6 +155,7 @@ LobbyMenu::LobbyMenu( void )
 	AddElement( PrefsButton = new LobbyMenuPrefsButton( tiny ? "Prefs" : "Preferences" ) );
 	AddElement( LeaveButton = new LobbyMenuLeaveButton() );
 	AddElement( FlyButton = new LobbyMenuFlyButton() );
+	AddElement( UploadButton = new LobbyMenuUploadButton( tiny ? "Upload" : "Upload Mission" ) );
 	
 	UIScaleMode = Raptor::ScaleMode::NONE;
 	SetElementScaling( Raptor::ScaleMode::IN_PLACE );
@@ -198,6 +199,21 @@ void LobbyMenu::UpdateRects( void )
 	
 	FlyButton->Rect.x = Rect.w - FlyButton->Rect.w - LeaveButton->Rect.x;
 	PrefsButton->Rect.x = (Rect.w - PrefsButton->Rect.w) / 2;
+	
+	// Custom mission upload (also reachable with F8): fourth button when the server allows uploads.
+	UploadButton->Visible = UploadButton->Enabled = (Raptor::Game->Data.PropertyAsString("permissions") == "all");
+	UploadButton->Rect.h = LeaveButton->Rect.h;
+	UploadButton->Rect.y = LeaveButton->Rect.y;
+	if( UploadButton->Visible )
+	{
+		int margin = LeaveButton->Rect.x;
+		int w = std::min<int>( 384 * ui_scale, (Rect.w - margin * 5) / 4 );
+		int gap = (Rect.w - margin * 2 - w * 4) / 3;
+		LeaveButton->Rect.w = UploadButton->Rect.w = PrefsButton->Rect.w = FlyButton->Rect.w = w;
+		UploadButton->Rect.x = margin + w + gap;
+		PrefsButton->Rect.x = margin + (w + gap) * 2;
+		FlyButton->Rect.x = Rect.w - margin - w;
+	}
 	
 	PlayerName->Rect.x = LeaveButton->Rect.x;
 	PlayerName->Rect.w = (FlyButton->Rect.x + FlyButton->Rect.w - PlayerList->Rect.x) / 2 - 5;
@@ -1536,6 +1552,35 @@ void LobbyMenuLeaveButton::Clicked( Uint8 button )
 		return;
 	
 	Raptor::Game->Net.DisconnectNice();
+}
+
+
+// ---------------------------------------------------------------------------
+
+
+LobbyMenuUploadButton::LobbyMenuUploadButton( std::string title )
+: LabelledButton( NULL, Raptor::Game->Res.GetFont( "Verdana.ttf", 32 ), title, Font::ALIGN_MIDDLE_CENTER, Raptor::Game->Res.GetAnimation("button.ani"), Raptor::Game->Res.GetAnimation("button_mdown.ani") )
+{
+	Red = 1.f;
+	Green = 1.f;
+	Blue = 1.f;
+	Alpha = 0.75f;
+}
+
+
+LobbyMenuUploadButton::~LobbyMenuUploadButton()
+{
+}
+
+
+void LobbyMenuUploadButton::Clicked( Uint8 button )
+{
+	if( !( Enabled && Visible ) || (button != SDL_BUTTON_LEFT) )
+		return;
+	
+	MissionUploader *mission_uploader = new MissionUploader();
+	mission_uploader->Draggable = ! Raptor::Game->Head.VR;
+	Raptor::Game->Layers.Add( mission_uploader );
 }
 
 
