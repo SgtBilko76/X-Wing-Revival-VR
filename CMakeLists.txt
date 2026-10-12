@@ -165,7 +165,8 @@ if(XWR_SERVER_ONLY)
 		DEPENDS $<TARGET_OBJECTS:xwr_server_objs> ${CMAKE_CURRENT_SOURCE_DIR}/tools/gen_server_stubs.py
 		COMMAND_EXPAND_LISTS VERBATIM)
 	target_sources(${XWR_TARGET} PRIVATE $<TARGET_OBJECTS:xwr_server_objs> ${CMAKE_BINARY_DIR}/server_stubs.c)
-	target_link_options(${XWR_TARGET} PRIVATE -static-libstdc++ -static-libgcc)
+	# Fully static, so the binary runs on any x86_64 Linux regardless of its glibc version.
+	target_link_options(${XWR_TARGET} PRIVATE -static)
 else()
 	target_link_libraries(${XWR_TARGET} PRIVATE SDL2_mixer::SDL2_mixer-static SDL2_image::SDL2_image-static SDL2_ttf::SDL2_ttf-static)
 	if(ANDROID)
