@@ -24,3 +24,12 @@ X-Wing Revival*.map
 X-Wing Revival.elf
 *.cfg
 std*.txt
+
+# X-Wing Revival VR build outputs
+/build*/
+/quest/.gradle/
+/quest/app/build/
+/quest/app/.cxx/
+/quest/local.properties
+/dist/
+*.apk
