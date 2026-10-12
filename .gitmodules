@@ -17,3 +17,6 @@
 [submodule "external/SDL_net"]
 	path = external/SDL_net
 	url = https://github.com/libsdl-org/SDL_net.git
+[submodule "external/gl4es"]
+	path = external/gl4es
+	url = https://github.com/ptitSeb/gl4es.git

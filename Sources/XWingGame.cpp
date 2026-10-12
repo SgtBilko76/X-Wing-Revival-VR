@@ -628,6 +628,19 @@ void XWingGame::SetDefaults( void )
 		Cfg.Settings[ "g_shader_version" ] = "130";  // Allow slightly more efficient worldspace blastpoint translation (flat in/out vs varying).
 	#endif
 	
+	#ifdef __ANDROID__
+		// Meta Quest: always in VR, rendering paced by OpenXR; gl4es understands GLSL 1.10/1.20 best.
+		Cfg.Settings[ "vr_always" ] = "true";
+		Cfg.Settings[ "vr_mirror" ] = "false";
+		Cfg.Settings[ "g_vsync" ] = "false";
+		Cfg.Settings[ "g_framebuffers" ] = "true";
+		Cfg.Settings[ "g_fullscreen" ] = "true";
+		Cfg.Settings[ "g_res_fullscreen_x" ] = "0";
+		Cfg.Settings[ "g_res_fullscreen_y" ] = "0";
+		Cfg.Settings[ "g_shader_version" ] = "110";
+		Cfg.Settings[ "maxfps" ] = "0";
+	#endif
+	
 	#ifdef APPLE_POWERPC
 		Cfg.Settings[ "g_dynamic_lights" ] = "1";
 		Cfg.Settings[ "g_debris" ] = "200";
@@ -660,6 +673,9 @@ void XWingGame::Setup( int argc, char **argv )
 	Cfg.Load( "campaign.cfg" );
 	
 	// VR at startup is enabled by "vr_always" setting or "-vr" parameter.
+	#ifdef XWR_OPENXR
+		vr = true;  // Meta Quest: there is no flat mode.
+	#endif
 	Cfg.Settings[ "vr_enable" ] = vr ? "true" : "false";
 	
 	if( screensaver )

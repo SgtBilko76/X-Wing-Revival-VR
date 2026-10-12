@@ -12,6 +12,10 @@
 #include <ios>
 #endif
 
+#ifdef __ANDROID__
+#include "AndroidPort.h"
+#endif
+
 
 // Set DLL directory to Bin32/Bin64 and make sure the working directory is correct.
 // This must happen before main, or DLLs will fail to link!
@@ -20,6 +24,16 @@ bool pre_main_result = Raptor::PreMain();
 
 int main( int argc, char **argv )
 {
+	#ifdef __ANDROID__
+		// Meta Quest: log to logcat and run from the game data folder.
+		if( ! Raptor::AndroidSetup() )
+		{
+			std::string msg = std::string("Game data not found.\n\nCopy the folders Fonts, Missions, Models, Music, Shaders, Ships, Sounds and Textures from X-Wing Revival 0.6.1 into:\n") + Raptor::AndroidDataDir();
+			SDL_ShowSimpleMessageBox( SDL_MESSAGEBOX_ERROR, "X-Wing Revival VR", msg.c_str(), NULL );
+			return 1;
+		}
+	#endif
+	
 	bool dedicated = false;
 	if( (argc >= 2) && (strcmp( argv[ 1 ], "-dedicated" ) == 0) )
 		dedicated = true;

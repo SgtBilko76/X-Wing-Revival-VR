@@ -1,0 +1,76 @@
+plugins {
+    id 'com.android.application'
+}
+
+// Native code (game, RaptorEngine, SDL2 libs, gl4es) is built from the repository root CMakeLists.txt.
+// Game data is NOT packed into the APK: it lives in /sdcard/Android/data/<applicationId>/files.
+
+android {
+    namespace 'com.bilko.xwingrevivalvr'
+    compileSdk 34
+    ndkVersion '27.2.12479018'
+
+    defaultConfig {
+        applicationId 'com.bilko.xwingrevivalvr'
+        minSdk 29
+        targetSdk 32
+        versionCode 1
+        versionName '0.1.0-beta1'
+
+        ndk {
+            abiFilters 'arm64-v8a'
+        }
+
+        externalNativeBuild {
+            cmake {
+                arguments '-DANDROID_STL=c++_shared', '-DXWR_OPENXR=' + (project.hasProperty('flat') ? 'OFF' : 'ON')
+                targets 'main'
+            }
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path '../../CMakeLists.txt'
+            version '3.22.1'
+            buildStagingDirectory '../../build-gradle'
+        }
+    }
+
+    buildFeatures {
+        prefab true
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            jniDebuggable true
+        }
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    sourceSets {
+        main {
+            // SDL's Java side (SDLActivity etc.) straight from the SDL submodule.
+            java.srcDirs += '../../external/SDL/android-project/app/src/main/java'
+        }
+    }
+
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging true
+        }
+    }
+}
+
+dependencies {
+    implementation 'org.khronos.openxr:openxr_loader_for_android:1.1.62'
+}
