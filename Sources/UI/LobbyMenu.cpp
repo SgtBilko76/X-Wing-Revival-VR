@@ -16,6 +16,7 @@
 LobbyMenu::LobbyMenu( void )
 {
 	Name = "LobbyMenu";
+	XRScene = true;
 	ReadControls = true;
 	
 	Rect.x = 0;
@@ -1285,6 +1286,7 @@ void LobbyMenu::Draw( void )
 	if( Raptor::Game->Head.VR && Raptor::Game->Gfx.DrawTo )
 	{
 		// In VR, show 3D background behind the menu.
+		if( Raptor::Game->XRPass != 2 ) {
 		glPushMatrix();
 		Pos3D origin;
 		Raptor::Game->Cam.Copy( &origin );
@@ -1295,6 +1297,9 @@ void LobbyMenu::Draw( void )
 		double bg_dist = Raptor::Game->Cfg.SettingAsDouble( "g_bg_dist", std::min<double>( 50000., Raptor::Game->Gfx.ZFar * 0.875 ) );
 		Raptor::Game->Gfx.DrawSphere3D( 0,0,0, bg_dist, 32, bg.CurrentFrame(), Graphics::TEXTURE_MODE_Y_ASIN );
 		glPopMatrix();
+		}
+		if( Raptor::Game->XRPass == 1 )
+			return;
 	}
 	else
 		Raptor::Game->Gfx.DrawRect2D( Rect.w / 2 - Rect.h, 0, Rect.w / 2 + Rect.h, Rect.h, Background.CurrentFrame(), 1.f, 1.f, 1.f, 1.f );

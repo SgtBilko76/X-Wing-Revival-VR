@@ -32,6 +32,7 @@
 RenderLayer::RenderLayer( void )
 {
 	Name = "RenderLayer";
+	XRScene = XRSceneOnly = true;
 	ReadControls = true;
 	
 	Rect.x = 0;

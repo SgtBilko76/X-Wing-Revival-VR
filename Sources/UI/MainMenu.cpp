@@ -17,6 +17,7 @@
 MainMenu::MainMenu( void )
 {
 	Name = "MainMenu";
+	XRScene = true;
 	ReadControls = true;
 	
 	Background.BecomeInstance( Raptor::Game->Res.GetAnimation("bg_menu.ani") );
@@ -128,6 +129,7 @@ void MainMenu::Draw( void )
 	if( vr )
 	{
 		// In VR, show 3D background behind the menu.
+		if( Raptor::Game->XRPass != 2 ) {
 		glPushMatrix();
 		Pos3D origin;
 		Raptor::Game->Cam.Copy( &origin );
@@ -138,6 +140,12 @@ void MainMenu::Draw( void )
 		double bg_dist = Raptor::Game->Cfg.SettingAsDouble( "g_bg_dist", std::min<double>( 50000., Raptor::Game->Gfx.ZFar * 0.875 ) );
 		Raptor::Game->Gfx.DrawSphere3D( 0,0,0, bg_dist, 32, bg.CurrentFrame(), Graphics::TEXTURE_MODE_Y_ASIN );
 		glPopMatrix();
+		}
+		if( Raptor::Game->XRPass == 1 )
+		{
+			Raptor::Game->Res.Lock.Unlock();
+			return;
+		}
 		DrawSetup();
 		
 		// Move title and version positions for VR.
