@@ -60,7 +60,18 @@ int main( int argc, char **argv )
 	Raptor::Game->Initialize( argc, argv );
 	
 	if( ! dedicated )
+	{
 		Raptor::Game->Run();
+		
+		#ifdef __ANDROID__
+			// The Android process outlives main(): silence and close audio now so the music stops
+			// immediately. The activity then ends the process (XWingRevivalActivity.onDestroy).
+			Raptor::Game->Snd.StopSounds();
+			Raptor::Game->Snd.StopMusic();
+			Mix_CloseAudio();
+			SDL_QuitSubSystem( SDL_INIT_AUDIO );
+		#endif
+	}
 	else
 	{
 		Raptor::Server->Console = new ServerConsole();

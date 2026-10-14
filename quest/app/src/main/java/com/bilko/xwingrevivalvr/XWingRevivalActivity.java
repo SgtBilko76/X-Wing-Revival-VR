@@ -41,6 +41,28 @@ public class XWingRevivalActivity extends SDLActivity
     }
 
     @Override
+    protected void onDestroy()
+    {
+        // The game keeps threads (audio, network, local server) that would outlive the activity and
+        // keep the music playing after quitting. End the whole process once the activity is gone.
+        // Watchdog: if the game thread doesn't stop within 3 s, kill the process anyway.
+        Thread watchdog = new Thread( new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                try { Thread.sleep( 3000 ); } catch( InterruptedException e ) { return; }
+                android.os.Process.killProcess( android.os.Process.myPid() );
+            }
+        } );
+        watchdog.setDaemon( true );
+        watchdog.start();
+        
+        super.onDestroy();
+        android.os.Process.killProcess( android.os.Process.myPid() );
+    }
+
+    @Override
     protected String[] getArguments()
     {
         // Developer testing: adb shell am start ... --es args "-screensaver"
