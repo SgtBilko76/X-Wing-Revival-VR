@@ -1,9 +1,10 @@
 **X-Wing Revival VR 1.0.2**: [X-Wing Revival](https://github.com/Raptor007/X-Wing-Revival) 0.6.1 by Raptor007 running natively on Meta Quest and PICO (OpenXR + OpenGL ES through gl4es), plus a headless dedicated server for Linux.
 
-**Two APKs:** `X-Wing-Revival-VR-v1.0.2-full.apk` (234 MB) has the X-Wing Revival 0.6.1 game data built in. Install it and play. `X-Wing-Revival-VR-v1.0.2.apk` (small) has no game data; with it you copy the official game folders to the headset yourself (see Install).
+**One APK:** `X-Wing-Revival-VR-v1.0.2-full.apk` (234 MB) has the X-Wing Revival 0.6.1 game data built in. Install it and play.
 
 ### Changes since v1.0.1
 - Quitting the game now closes it completely: the music no longer keeps playing after you quit (from the in-game Quit button or the Quest menu)
+- Only the full APK (game data built in) is released now
 
 ### Changes since v0.1.1-beta
 - Menus, lobby and pause menu: the space background (or the paused battle) now surrounds you in 3D, with the menu floating in front of you
@@ -21,16 +22,10 @@
 - Single player, LAN and online games; the Linux dedicated server works with Quest, PICO and PC players
 - Custom missions (see below)
 
-### Install (full APK, easiest)
+### Install
 1. Install `X-Wing-Revival-VR-v1.0.2-full.apk` with SideQuest or `adb install -r X-Wing-Revival-VR-v1.0.2-full.apk`.
 2. Start **X-Wing Revival VR** from *Unknown Sources* and allow "access to all files" when asked.
 3. The first start unpacks the game data to `/sdcard/XWingRevival/` (about 310 MB, takes a moment), then the menu appears.
-
-### Install (small APK)
-1. Install `X-Wing-Revival-VR-v1.0.2.apk` with SideQuest or `adb install -r X-Wing-Revival-VR-v1.0.2.apk`.
-2. Download the official [X-Wing Revival 0.6.1 zip](https://github.com/Raptor007/X-Wing-Revival/releases/download/v0.6.1-alpha/X-Wing.Revival.0.6.1.Alpha.zip) and unzip it on your PC.
-3. From the `X-Wing Revival` folder copy `Fonts`, `Missions`, `Models`, `Music`, `Shaders`, `Ships`, `Sounds` and `Textures` to `/sdcard/XWingRevival/` on the headset (about 310 MB, with SideQuest's file manager or `adb push`).
-4. Start **X-Wing Revival VR** from *Unknown Sources* and allow "access to all files" when asked.
 
 ### PICO
 The same APK runs on **PICO 4 / 4 Ultra / Neo 3** (untested on real PICO hardware). PICO needs **PICO OS 5.9.0 or newer**. Controller buttons are the same as on Quest. If it doesn't start on PICO, please open an issue with the output of `adb logcat -s XWingRevival`.
