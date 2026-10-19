@@ -53,8 +53,7 @@ JoinMenu::JoinMenu( void )
 	AddElement( ServerList );
 	
 	// Internet servers are always listed (LAN games are added below them as they announce themselves).
-	ServerList->AddItem( XWR_ONLINE_SERVER, "X-Wing Revival VR Server (Internet)" );
-	ServerList->AddItem( "www.raptor007.com:7000", "Raptor007 Official Server (Internet)" );
+	ServerList->AddItem( XWR_ONLINE_SERVER, "Raptor007 Official Server (Internet)" );
 	
 	rect.y += rect.h + 16;
 	rect.h = ItemFont->GetHeight();

@@ -1,10 +1,9 @@
-**X-Wing Revival VR 1.0.2**: [X-Wing Revival](https://github.com/Raptor007/X-Wing-Revival) 0.6.1 by Raptor007 running natively on Meta Quest and PICO (OpenXR + OpenGL ES through gl4es), plus a headless dedicated server for Linux.
+**X-Wing Revival VR 1.0.3**: [X-Wing Revival](https://github.com/Raptor007/X-Wing-Revival) 0.6.1 by Raptor007 running natively on Meta Quest and PICO (OpenXR + OpenGL ES through gl4es), plus a headless dedicated server for Linux.
 
-**One APK:** `X-Wing-Revival-VR-v1.0.2-full.apk` (234 MB) has the X-Wing Revival 0.6.1 game data built in. Install it and play.
+**One APK:** `X-Wing-Revival-VR-v1.0.3-full.apk` (234 MB) has the X-Wing Revival 0.6.1 game data built in. Install it and play.
 
-### Changes since v1.0.1
-- Quitting the game now closes it completely: the music no longer keeps playing after you quit (from the in-game Quit button or the Quest menu)
-- Only the full APK (game data built in) is released now
+### Changes since v1.0.2
+- **Fly Online** now joins the official Raptor007 server (`www.raptor007.com:7000`); the X-Wing Revival VR server is gone from the game
 
 ### Changes since v0.1.1-beta
 - Menus, lobby and pause menu: the space background (or the paused battle) now surrounds you in 3D, with the menu floating in front of you
@@ -18,12 +17,12 @@
 - Menus on a big screen that stays in place, with the space around you
 - Touch controllers bound as a joystick in flight, remappable in *Controls*
 - Laser pointer and on-screen keyboard for the menus
-- **Fly Online** joins the X-Wing Revival VR server (`217.154.211.69:7000`); *Custom / LAN* lists it and the official Raptor007 server
+- **Fly Online** joins the official Raptor007 server (`www.raptor007.com:7000`); *Custom / LAN* lists it too
 - Single player, LAN and online games; the Linux dedicated server works with Quest, PICO and PC players
 - Custom missions (see below)
 
 ### Install
-1. Install `X-Wing-Revival-VR-v1.0.2-full.apk` with SideQuest or `adb install -r X-Wing-Revival-VR-v1.0.2-full.apk`.
+1. Install `X-Wing-Revival-VR-v1.0.3-full.apk` with SideQuest or `adb install -r X-Wing-Revival-VR-v1.0.3-full.apk`.
 2. Start **X-Wing Revival VR** from *Unknown Sources* and allow "access to all files" when asked.
 3. The first start unpacks the game data to `/sdcard/XWingRevival/` (about 310 MB, takes a moment), then the menu appears.
 
@@ -53,7 +52,7 @@ Missions are `.def` text files (the built-in campaign missions in `Missions/` sh
 - **Upload from the game:** in the lobby click **Upload Mission**, choose a mission from your `Missions` folder and click *Upload*. Works while the server allows changes by everyone (`permissions` = all, the default).
 
 ### Dedicated server (Linux x86_64)
-Unpack `X-Wing-Revival-VR-server-v1.0.2-linux-x86_64.tar.gz` and run `./start-server.sh`. It needs no graphics card or display; on the first start it downloads the official game once and keeps only the data the server needs. Players join on TCP port 7000 (on a LAN it shows up in *Custom / LAN*). PC players with the original game join an Internet server by typing its address in *Custom / LAN* → *Connect to IP Address*.
+Unpack `X-Wing-Revival-VR-server-v1.0.3-linux-x86_64.tar.gz` and run `./start-server.sh`. It needs no graphics card or display; on the first start it downloads the official game once and keeps only the data the server needs. Players join on TCP port 7000 (on a LAN it shows up in *Custom / LAN*). PC players with the original game join an Internet server by typing its address in *Custom / LAN* → *Connect to IP Address*.
 
 ### Known limits
 - Big fleet battles run at about 45-65 FPS (72 Hz display); the engine draws each eye separately.
