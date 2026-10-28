@@ -1,5 +1,7 @@
 **X-Wing Revival VR 1.0.3**: [X-Wing Revival](https://github.com/Raptor007/X-Wing-Revival) 0.6.1 by Raptor007 running natively on Meta Quest and PICO (OpenXR + OpenGL ES through gl4es), plus a headless dedicated server for Linux.
 
+**Download, install guide, controls and pictures: [portroyale.online/xwingrevival.html](https://portroyale.online/xwingrevival.html)**
+
 **One APK:** `X-Wing-Revival-VR-v1.0.3-full.apk` (234 MB) has the X-Wing Revival 0.6.1 game data built in. Install it and play.
 
 ### Changes since v1.0.2
