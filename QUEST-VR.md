@@ -30,6 +30,9 @@
 The same APK runs on **PICO 4 / 4 Ultra / Neo 3** (untested on real PICO hardware). PICO needs **PICO OS 5.9.0 or newer**. Controller buttons are the same as on Quest. If it doesn't start on PICO, please open an issue with the output of `adb logcat -s XWingRevival`.
 
 ### Controls
+
+![X-Wing Revival VR controller mapping](docs/controls.webp)
+
 | Input | Flight | Menus |
 |---|---|---|
 | Left stick | Pitch and yaw | |
